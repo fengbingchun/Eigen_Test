@@ -106,6 +106,10 @@ int test_eigen_base()
 		std::cout << eigenSolver.eigenvectors() << std::endl << std::endl;
 	}
 
+	Eigen::SelfAdjointEigenSolver<Eigen::Matrix2f>::RealVectorType eigen_values = eigenSolver.eigenvalues();
+	Eigen::Vector2f vec = eigen_values.array();
+	std::cout << vec[0] << "    " << vec[1] << std::endl;
+
 	//12. 类Map及动态矩阵的使用
 	int array1[4] = { 1, 2, 3, 4 };
 	int array2[4] = { 5, 6, 7, 8 };
