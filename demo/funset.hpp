@@ -4,4 +4,5 @@
 int test_eigen_base();
 int test_matrix_inverse();
 
+
 #endif // FBC_EIGEN_FUNSET_HPP_

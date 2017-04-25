@@ -7,7 +7,7 @@ static void matrix_mul_matrix(T* p1, int iRow1, int iCol1, T* p2, int iRow2, int
 {
 	if (iRow1 != iRow2) return;
 
-	//列优先
+	//列优先, Matrix创建的矩阵默认是按列存储
 	//Eigen::Map< Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> > map1(p1, iRow1, iCol1);
 	//Eigen::Map< Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> > map2(p2, iRow2, iCol2);
 	//Eigen::Map< Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> > map3(p3, iCol1, iCol2);
@@ -123,11 +123,14 @@ int test_eigen_base()
 
 int test_matrix_inverse()
 {
-	Eigen::MatrixXd m(3, 2);
+	Eigen::MatrixXd m(3, 2), m_(2, 3);
 	m << 1, 2, 3, 4, 5, 6;
+	m_ = m.reverse(); // 转置矩阵
 
-	Eigen::MatrixXd m_(2, 3);
-	m_ = m.reverse();
+	Eigen::MatrixXd m2(3, 3), m2_(3, 3);
+	m2 << 1, 2, 3, 4, 5, 6, 7, 8, 9;
+	m2_ = m2.inverse(); // 逆矩阵
+	Eigen::MatrixXd m3 = m2.inverse();
 
 	return 0;
 }
