@@ -1,5 +1,5 @@
 1. Eigen:
-	version: 3.2.5
-	commit: 61d72f6
-	date: 2015.06.16
-	url: https://github.com/RLovelett/eigen/releases?after=3.2.8
+	version: 3.3.3
+	commit: 9e97af7
+	date: 2017.02.21
+	url: https://github.com/RLovelett/eigen/releases/tag/3.3.3
