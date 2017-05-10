@@ -1,6 +1,50 @@
 #include "funset.hpp"
 #include <iostream>
+#include <vector>
+#include <string>
+#include <opencv2/opencv.hpp>
 #include <Eigen/Dense>
+
+int test_mat_transpose()
+{
+	const std::vector<std::string> image_name{ "E:/GitCode/Eigen_Test/test_data/test1.jpg",
+		"E:/GitCode/Eigen_Test/test_data/ret_mat_transpose.jpg" };
+	cv::Mat mat_src = cv::imread(image_name[0]);
+	if (!mat_src.data) {
+		fprintf(stderr, "read image fail: %s\n", image_name[0].c_str());
+		return -1;
+	}
+
+	std::vector<cv::Mat> mat_split;
+	cv::split(mat_src, mat_split);
+
+	// reference: http://stackoverflow.com/questions/14783329/opencv-cvmat-and-eigenmatrix
+	// Map the OpenCV matrix with Eigen:
+	Eigen::Map<Eigen::Matrix<unsigned char, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>>
+		map_b(mat_split[0].data, mat_split[0].rows, mat_split[0].cols),
+		map_g(mat_split[1].data, mat_split[1].rows, mat_split[1].cols),
+		map_r(mat_split[2].data, mat_split[2].rows, mat_split[2].cols);
+
+	Eigen::Matrix<unsigned char, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>
+		trans_b = map_b.transpose(),
+		trans_g = map_g.transpose(),
+		trans_r = map_r.transpose();
+
+	cv::Mat
+		mat_dst_b(trans_b.rows(), trans_b.cols(), CV_8UC1, trans_b.data()),
+		mat_dst_g(trans_g.rows(), trans_g.cols(), CV_8UC1, trans_g.data()),
+		mat_dst_r(trans_r.rows(), trans_r.cols(), CV_8UC1, trans_r.data());
+	std::vector<cv::Mat> mat_merge;
+	mat_merge.push_back(std::move(mat_dst_b));
+	mat_merge.push_back(std::move(mat_dst_g));
+	mat_merge.push_back(std::move(mat_dst_r));
+	cv::Mat mat_dst;
+	cv::merge(mat_merge, mat_dst);
+
+	cv::imwrite(image_name[1], mat_dst);
+
+	return 0;
+}
 
 template <typename T>
 static void matrix_mul_matrix(T* p1, int iRow1, int iCol1, T* p2, int iRow2, int iCol2, T* p3)
