@@ -23,6 +23,7 @@
     <ClCompile Include="..\..\..\demo\TestEigen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\demo\common.hpp" />
     <ClInclude Include="..\..\..\demo\funset.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
