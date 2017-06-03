@@ -126,6 +126,7 @@
       <ObjectFileName>.\../../../obj/dbg/x64_vc12/TestEigen\</ObjectFileName>
       <ProgramDataBaseFileName>.\../../../obj/dbg/x64_vc12/TestEigen\</ProgramDataBaseFileName>
       <AdditionalIncludeDirectories>E:\GitCode\Eigen_Test\src\Eigen;D:\soft\OpenCV2.4.13\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -169,6 +170,7 @@
       <AssemblerListingLocation>.\../../../obj/rel/x64_vc12/TestEigen\</AssemblerListingLocation>
       <ObjectFileName>.\../../../obj/rel/x64_vc12/TestEigen\</ObjectFileName>
       <ProgramDataBaseFileName>.\../../../obj/rel/x64_vc12/TestEigen\</ProgramDataBaseFileName>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
