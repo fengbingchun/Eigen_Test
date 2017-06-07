@@ -1,6 +1,7 @@
 #ifndef FBC_EIGEN_FUNSET_HPP_
 #define FBC_EIGEN_FUNSET_HPP_
 
+int test_trace(); // 求矩阵的迹
 int test_pseudoinverse(); // 求伪逆矩阵
 int test_SVD(); // 矩阵的奇异值分解
 int test_eigenvalues_eigenvectors(); // 求特征值和特征向量

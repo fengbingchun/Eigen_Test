@@ -3,7 +3,7 @@
 
 int main(int argc, char* argv[])
 {
-	int ret = test_pseudoinverse();
+	int ret = test_trace();
 
 	if (ret == 0) fprintf(stdout, "========== test success ==========\n");
 	else fprintf(stderr, "********** test fail: %d **********\n", ret);
