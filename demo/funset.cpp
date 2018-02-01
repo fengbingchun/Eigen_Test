@@ -9,6 +9,7 @@
 
 int test_calcCovarMatrix()
 {
+	// Blog: http://blog.csdn.net/fengbingchun/article/details/73558370
 	// reference: https://stackoverflow.com/questions/15138634/eigen-is-there-an-inbuilt-way-to-calculate-sample-covariance
 	std::vector<std::vector<float>> vec{ { 1.2f, 2.5f, 5.6f, -2.5f },
 					{ -3.6f, 9.2f, 0.5f, 7.2f },
@@ -47,6 +48,7 @@ int test_calcCovarMatrix()
 
 int test_meanStdDev()
 {
+	// Blog: http://blog.csdn.net/fengbingchun/article/details/73323475
 	std::vector<std::vector<float>> vec{ { 1.2f, 2.5f, 5.6f, -2.5f },
 						{ -3.6f, 9.2f, 0.5f, 7.2f },
 						{ 4.3f, 1.3f, 9.4f, -3.4f } };
@@ -76,6 +78,7 @@ int test_meanStdDev()
 
 int test_trace()
 {
+	// Blog: http://blog.csdn.net/fengbingchun/article/details/72895976
 	std::vector<std::vector<float>> vec{ { 1.2f, 2.5f, 5.6f, -2.5f },
 					{ -3.6f, 9.2f, 0.5f, 7.2f },
 					{ 4.3f, 1.3f, 9.4f, -3.4f } };
@@ -98,6 +101,7 @@ int test_trace()
 
 int test_pseudoinverse()
 {
+	// Blog: http://blog.csdn.net/fengbingchun/article/details/72874623
 	//std::vector<std::vector<float>> vec{ { 0.68f, 0.597f },
 	//				{ -0.211f, 0.823f },
 	//				{ 0.566f, -0.605f } };
@@ -138,6 +142,7 @@ int test_pseudoinverse()
 
 int test_SVD()
 {
+	// Blog: http://blog.csdn.net/fengbingchun/article/details/72853757
 	//std::vector<std::vector<float>> vec{ { 1.2f, 2.5f, 5.6f, -2.5f },
 	//				{ -3.6f, 9.2f, 0.5f, 7.2f },
 	//				{ 4.3f, 1.3f, 9.4f, -3.4f },
@@ -180,6 +185,7 @@ int test_SVD()
 
 int test_eigenvalues_eigenvectors()
 {
+	// Blog: http://blog.csdn.net/fengbingchun/article/details/72801310
 	std::vector<float> vec{ 1.23f, 2.12f, -4.2f,
 		2.12f, -5.6f, 8.79f,
 		-4.2f, 8.79f, 7.3f };
@@ -204,6 +210,7 @@ int test_eigenvalues_eigenvectors()
 
 int test_norm()
 {
+	// Blog: http://blog.csdn.net/fengbingchun/article/details/72636374
 	fprintf(stderr, "test norm with eigen:\n");
 	// 1. vector
 	std::vector<float> vec1{ -2, 3, 1 };
@@ -236,6 +243,7 @@ int test_norm()
 
 int test_inverse_matrix()
 {
+	// Blog: http://blog.csdn.net/fengbingchun/article/details/72571800
 	std::vector<float> vec{ 5, -2, 2, 7, 1, 0, 0, 3, -3, 1, 5, 0, 3, -1, -9, 4 };
 	const int N{ 4 };
 	if (vec.size() != (int)pow(N, 2)) {
@@ -267,6 +275,7 @@ int test_mat_determinant()
 
 int test_mat_transpose()
 {
+	// Blog: http://blog.csdn.net/fengbingchun/article/details/71514010
 	const std::vector<std::string> image_name{ "E:/GitCode/Eigen_Test/test_data/test1.jpg",
 		"E:/GitCode/Eigen_Test/test_data/ret_mat_transpose.jpg" };
 	cv::Mat mat_src = cv::imread(image_name[0]);
@@ -326,6 +335,7 @@ static void matrix_mul_matrix(T* p1, int iRow1, int iCol1, T* p2, int iRow2, int
 
 int test_eigen_base()
 {
+	// Blog: http://blog.csdn.net/fengbingchun/article/details/47378515
 	//1. ¾ØÕóµÄ¶¨Òå
 	Eigen::MatrixXd m(2, 2);
 	Eigen::Vector3d vec3d;
