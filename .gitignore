@@ -6,5 +6,5 @@
 *.suo
 *.ipch
 /test_data/
-
+/prj/linux_cmake/build/
 
