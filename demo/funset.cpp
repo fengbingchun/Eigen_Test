@@ -276,8 +276,12 @@ int test_mat_determinant()
 int test_mat_transpose()
 {
 	// Blog: http://blog.csdn.net/fengbingchun/article/details/71514010
+#ifdef __linux__
+	const std::vector<std::string> image_name{"test_data/test1.jpg", "test_data/ret_mat_transpose.jpg"};
+#else
 	const std::vector<std::string> image_name{ "E:/GitCode/Eigen_Test/test_data/test1.jpg",
 		"E:/GitCode/Eigen_Test/test_data/ret_mat_transpose.jpg" };
+#endif
 	cv::Mat mat_src = cv::imread(image_name[0]);
 	if (!mat_src.data) {
 		fprintf(stderr, "read image fail: %s\n", image_name[0].c_str());
@@ -320,12 +324,12 @@ static void matrix_mul_matrix(T* p1, int iRow1, int iCol1, T* p2, int iRow2, int
 {
 	if (iRow1 != iRow2) return;
 
-	//ÁĞÓÅÏÈ, Matrix´´½¨µÄ¾ØÕóÄ¬ÈÏÊÇ°´ÁĞ´æ´¢
+	//åˆ—ä¼˜å…ˆ, Matrixåˆ›å»ºçš„çŸ©é˜µé»˜è®¤æ˜¯æŒ‰åˆ—å­˜å‚¨
 	//Eigen::Map< Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> > map1(p1, iRow1, iCol1);
 	//Eigen::Map< Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> > map2(p2, iRow2, iCol2);
 	//Eigen::Map< Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> > map3(p3, iCol1, iCol2);
 
-	//ĞĞÓÅÏÈ
+	//è¡Œä¼˜å…ˆ
 	Eigen::Map< Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> > map1(p1, iRow1, iCol1);
 	Eigen::Map< Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> > map2(p2, iRow2, iCol2);
 	Eigen::Map< Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> > map3(p3, iCol1, iCol2);
@@ -336,23 +340,23 @@ static void matrix_mul_matrix(T* p1, int iRow1, int iCol1, T* p2, int iRow2, int
 int test_eigen_base()
 {
 	// Blog: http://blog.csdn.net/fengbingchun/article/details/47378515
-	//1. ¾ØÕóµÄ¶¨Òå
+	//1. çŸ©é˜µçš„å®šä¹‰
 	Eigen::MatrixXd m(2, 2);
 	Eigen::Vector3d vec3d;
 	Eigen::Vector4d vec4d(1.0, 2.0, 3.0, 4.0);
 
-	//2. ¶¯Ì¬¾ØÕó¡¢¾²Ì¬¾ØÕó
+	//2. åŠ¨æ€çŸ©é˜µã€é™æ€çŸ©é˜µ
 	Eigen::MatrixXd matrixXd;
 	Eigen::Matrix3d matrix3d;
 
-	//3. ¾ØÕóÔªËØµÄ·ÃÎÊ
+	//3. çŸ©é˜µå…ƒç´ çš„è®¿é—®
 	m(0, 0) = 1;
 	m(0, 1) = 2;
 	m(1, 0) = m(0, 0) + 3;
 	m(1, 1) = m(0, 0) * m(0, 1);
 	std::cout << m << std::endl << std::endl;
 
-	//4. ÉèÖÃ¾ØÕóµÄÔªËØ
+	//4. è®¾ç½®çŸ©é˜µçš„å…ƒç´ 
 	m << -1.5, 2.4,
 		6.7, 2.0;
 	std::cout << m << std::endl << std::endl;
@@ -364,12 +368,12 @@ int test_eigen_base()
 	matrixXf << Eigen::MatrixXf::Identity(row, col);
 	std::cout << matrixXf << std::endl << std::endl;
 
-	//5. ÖØÖÃ¾ØÕó´óĞ¡
+	//5. é‡ç½®çŸ©é˜µå¤§å°
 	Eigen::MatrixXd matrixXd1(3, 3);
 	m = matrixXd1;
 	std::cout << m.rows() << "  " << m.cols() << std::endl << std::endl;
 
-	//6. ¾ØÕóÔËËã
+	//6. çŸ©é˜µè¿ç®—
 	m << 1, 2, 7,
 		3, 4, 8,
 		5, 6, 9;
@@ -382,7 +386,7 @@ int test_eigen_base()
 	std::cout << -m << std::endl << std::endl;
 	std::cout << m << std::endl << std::endl;
 
-	//7. Çó¾ØÕóµÄ×ªÖÃ¡¢¹²éî¾ØÕó¡¢°éËæ¾ØÕó
+	//7. æ±‚çŸ©é˜µçš„è½¬ç½®ã€å…±è½­çŸ©é˜µã€ä¼´éšçŸ©é˜µ
 	std::cout << m.transpose() << std::endl << std::endl;
 	std::cout << m.conjugate() << std::endl << std::endl;
 	std::cout << m.adjoint() << std::endl << std::endl;
@@ -390,20 +394,20 @@ int test_eigen_base()
 	m.transposeInPlace();
 	std::cout << m << std::endl << std::endl;
 
-	//8. ¾ØÕóÏà³Ë¡¢¾ØÕóÏòÁ¿Ïà³Ë
+	//8. çŸ©é˜µç›¸ä¹˜ã€çŸ©é˜µå‘é‡ç›¸ä¹˜
 	std::cout << m*m << std::endl << std::endl;
 	vec3d = Eigen::Vector3d(1, 2, 3);
 	std::cout << m * vec3d << std::endl << std::endl;
 	std::cout << vec3d.transpose()*m << std::endl << std::endl;
 
-	//9. ¾ØÕóµÄ¿é²Ù×÷
+	//9. çŸ©é˜µçš„å—æ“ä½œ
 	std::cout << m << std::endl << std::endl;
 	std::cout << m.block(1, 1, 2, 2) << std::endl << std::endl;
 	std::cout << m.block<1, 2>(0, 0) << std::endl << std::endl;
 	std::cout << m.col(1) << std::endl << std::endl;
 	std::cout << m.row(0) << std::endl << std::endl;
 
-	//10. ÏòÁ¿µÄ¿é²Ù×÷
+	//10. å‘é‡çš„å—æ“ä½œ
 	Eigen::ArrayXf arrayXf(10);
 	arrayXf << 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
 	std::cout << vec3d << std::endl << std::endl;
@@ -411,7 +415,7 @@ int test_eigen_base()
 	std::cout << arrayXf.head(5) << std::endl << std::endl;
 	std::cout << arrayXf.tail(4) * 2 << std::endl << std::endl;
 
-	//11. Çó½â¾ØÕóµÄÌØÕ÷ÖµºÍÌØÕ÷ÏòÁ¿
+	//11. æ±‚è§£çŸ©é˜µçš„ç‰¹å¾å€¼å’Œç‰¹å¾å‘é‡
 	Eigen::Matrix2f matrix2f;
 	matrix2f << 1, 2, 3, 4;
 	Eigen::SelfAdjointEigenSolver<Eigen::Matrix2f> eigenSolver(matrix2f);
@@ -424,7 +428,7 @@ int test_eigen_base()
 	Eigen::Vector2f vec = eigen_values.array();
 	std::cout << vec[0] << "    " << vec[1] << std::endl;
 
-	//12. ÀàMap¼°¶¯Ì¬¾ØÕóµÄÊ¹ÓÃ
+	//12. ç±»MapåŠåŠ¨æ€çŸ©é˜µçš„ä½¿ç”¨
 	int array1[4] = { 1, 2, 3, 4 };
 	int array2[4] = { 5, 6, 7, 8 };
 	int array3[4] = { 0, 0, 0, 0 };
@@ -439,11 +443,11 @@ int test_matrix_inverse()
 {
 	Eigen::MatrixXd m(3, 2), m_(2, 3);
 	m << 1, 2, 3, 4, 5, 6;
-	m_ = m.reverse(); // ×ªÖÃ¾ØÕó
+	m_ = m.reverse(); // è½¬ç½®çŸ©é˜µ
 
 	Eigen::MatrixXd m2(3, 3), m2_(3, 3);
 	m2 << 1, 2, 3, 4, 5, 6, 7, 8, 9;
-	m2_ = m2.inverse(); // Äæ¾ØÕó
+	m2_ = m2.inverse(); // é€†çŸ©é˜µ
 	Eigen::MatrixXd m3 = m2.inverse();
 
 	return 0;

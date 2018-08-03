@@ -7,4 +7,5 @@
 *.ipch
 /test_data/
 /prj/linux_cmake/build/
+/prj/linux_cmake/test_data
 

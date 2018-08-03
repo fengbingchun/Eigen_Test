@@ -1,16 +1,16 @@
 #ifndef FBC_EIGEN_FUNSET_HPP_
 #define FBC_EIGEN_FUNSET_HPP_
 
-int test_calcCovarMatrix(); // ÇóĞ­·½²î¾ØÕó
-int test_meanStdDev(); // ¼ÆËã¾ØÕóµÄ¾ùÖµ¡¢·½²î¡¢±ê×¼²î
-int test_trace(); // Çó¾ØÕóµÄ¼£
-int test_pseudoinverse(); // ÇóÎ±Äæ¾ØÕó
-int test_SVD(); // ¾ØÕóµÄÆæÒìÖµ·Ö½â
-int test_eigenvalues_eigenvectors(); // ÇóÌØÕ÷ÖµºÍÌØÕ÷ÏòÁ¿
-int test_norm(); // Çó·¶Êı
-int test_inverse_matrix(); // ÇóÄæ¾ØÕó
-int test_mat_determinant(); // ¼ÆËãĞĞÁĞÊ½
-int test_mat_transpose(); // ¾ØÕó×ªÖÃ
+int test_calcCovarMatrix(); // æ±‚åæ–¹å·®çŸ©é˜µ
+int test_meanStdDev(); // è®¡ç®—çŸ©é˜µçš„å‡å€¼ã€æ–¹å·®ã€æ ‡å‡†å·®
+int test_trace(); // æ±‚çŸ©é˜µçš„è¿¹
+int test_pseudoinverse(); // æ±‚ä¼ªé€†çŸ©é˜µ
+int test_SVD(); // çŸ©é˜µçš„å¥‡å¼‚å€¼åˆ†è§£
+int test_eigenvalues_eigenvectors(); // æ±‚ç‰¹å¾å€¼å’Œç‰¹å¾å‘é‡
+int test_norm(); // æ±‚èŒƒæ•°
+int test_inverse_matrix(); // æ±‚é€†çŸ©é˜µ
+int test_mat_determinant(); // è®¡ç®—è¡Œåˆ—å¼
+int test_mat_transpose(); // çŸ©é˜µè½¬ç½®
 int test_eigen_base();
 int test_matrix_inverse();
 
